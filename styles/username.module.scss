@@ -1,0 +1,40 @@
+.container {
+
+  .header {
+    height: 60px;
+    padding: 0 15px;
+    background-color: wheat;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    .userName {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #c4ade6;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+
+      span {
+        transform: translateY(7px);
+      }
+
+    }
+  }
+  .main{
+    .mainTitle{
+      text-align: center;
+      margin-top: 20px;
+    }
+    .content{
+      max-width: 800px;
+      margin: 10px auto 0;
+      padding: 8px;
+      background-color: lightpink;
+      text-align: center;
+
+    }
+  }
+}

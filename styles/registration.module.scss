@@ -1,0 +1,37 @@
+.inner{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container{
+    max-height: 300px;
+    width: 280px;
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+
+    .inputWrap{
+      margin-bottom: 7px;
+      display: flex;
+      justify-content: space-between;
+
+      label{
+        margin-right: 7px;
+      }
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+      .error{
+        color:red;
+      }
+    }
+  }
+}

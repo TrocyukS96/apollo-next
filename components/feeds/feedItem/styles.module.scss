@@ -1,0 +1,16 @@
+.inner{
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
+  border:2px solid;
+  background: white;
+
+
+  div{
+    padding: 5px;
+    &:nth-child(1), &:nth-child(2){
+      border-right: 2px solid;
+    }
+  }
+
+
+}
