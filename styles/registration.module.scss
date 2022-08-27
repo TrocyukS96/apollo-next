@@ -8,7 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #cb94d2;
+  background:
+          radial-gradient(ellipse at 40% 40%, red, transparent),
+          radial-gradient(ellipse at 60% 60%, blue, transparent);
+  /* И смешаем их с помощью бленда мода */
+  background-blend-mode: screen;
 
   .container{
     width: 280px;

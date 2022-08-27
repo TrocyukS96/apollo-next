@@ -69,6 +69,7 @@ const Feeds = () => {
             <div className={s.linksTitle}>
                 <div className={s.descriptionTitle} onClick={sortHandler}>Description  {params.orderBy.description==='asc' ? <SortArrowUpIcon/> :<SortArrowDownIcon/>} </div>
                 <div className={s.VotesTitle}>Votes</div>
+                <div className={s.postOwnerTitle}>Post owner</div>
             </div>
             <div className={s.scrollbarContainer}>
                 {links && links.map((link) => {
@@ -80,6 +81,7 @@ const Feeds = () => {
                             name={link.id}
                             link={link.url}
                             description={link.description}
+                            postOwner={link.postedBy.name}
                             userName={username}
                         />
                     )

@@ -6,7 +6,7 @@
   }
   .linksTitle{
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 30% 40% 30%;
     background: #fff;
     border: 2px solid;
     cursor:pointer;
@@ -14,6 +14,9 @@
     .descriptionTitle{
       border-right: 2px solid;
 
+    }
+    .postOwnerTitle{
+      border-left: 2px solid;
     }
   }
   .scrollbarContainer{

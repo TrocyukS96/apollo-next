@@ -12,12 +12,13 @@ interface IProps {
     style?: {}
     votes?: VoteType[]
     id: string
-    userName?:string
+    userName?: string
+    postOwner:string
 }
 
 const toMapVotes = (votes: VoteType[]) => <div className={s.votes}>{votes?.map((v: VoteType) => <div className={s.user}
                                                                                                      key={v.id}>{v.user.name[0]}</div>)}</div>
-const FeedItem = ({link, description, userName, id, style, votes}: IProps) => {
+const FeedItem = ({link,postOwner, description, userName, id, style, votes}: IProps) => {
     const [isVote, setIsVote] = useState(false)
     const [vote] = useMutation(VOTE_LINK)
     const [isOpenAccordion, setIsOpenAccordion] = useState(false)
@@ -27,7 +28,7 @@ const FeedItem = ({link, description, userName, id, style, votes}: IProps) => {
         }
     }
     const upvoteHandler = async () => {
-        if(!(votes?.find(f=>f.user.name===userName)) && !isVote){
+        if (!(votes?.find(f => f.user.name === userName)) && !isVote) {
             const data = await vote({variables: {linkId: id}})
             console.log(data)
             setIsVote(true)
@@ -40,7 +41,8 @@ const FeedItem = ({link, description, userName, id, style, votes}: IProps) => {
             <div className={s.description}>
                 <div>{description}</div>
                 <div onClick={upvoteHandler} className={s.upvoteIconWrapper}>
-                    <UpvoteIcon className={s.upvoteIcon} fill={isVote || votes?.find(f=>f.user.name===userName)  ? 'black' : 'white'} />
+                    <UpvoteIcon className={s.upvoteIcon}
+                                fill={isVote || votes?.find(f => f.user.name === userName) ? 'black' : 'white'}/>
                 </div>
             </div>
             <div className={s.votesAccordion}
@@ -74,6 +76,7 @@ const FeedItem = ({link, description, userName, id, style, votes}: IProps) => {
                 </div>
 
             </div>
+            <div className={s.userBlock}>{postOwner}</div>
         </div>
 
     );

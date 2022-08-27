@@ -3,7 +3,7 @@
   background: white;
   overflow-y: hidden;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 40% 30%;
 
   .description {
 
@@ -78,7 +78,9 @@
   }
   }
 
-
+  .userBlock{
+    border-left: 2px solid;
+  }
   .votes {
     display: flex;
     justify-content: center;
