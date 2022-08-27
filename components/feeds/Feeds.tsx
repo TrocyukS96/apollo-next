@@ -1,29 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {NetworkStatus, useLazyQuery, useMutation, useQuery} from "@apollo/client";
-import {FETCH_ALL_LINKS, FETCH_LINKS_BY_PARAMS, FETCH_PAGINATION_LINKS, VOTE_LINK} from "../../api/links";
+import {NetworkStatus, useQuery} from "@apollo/client";
+import {GET_LINKS_BY_PARAMS} from "../../api/links";
 import FeedItem from "./feedItem/FeedItem";
 import s from './styles.module.scss';
-import {LinkType} from "../../types";
+import {LinkType, ParamsType} from "../../types";
 import AddLinkForm from "../addLinkForm/AddLinkForm";
 import FilterInput from "../filterInput/FilterInput";
 import {Pagination} from "@mui/material";
-import {SIGN_IN} from "../../api/signIn";
 import {useRouter} from "next/router";
-
-
-
 
 const Feeds = () => {
     const router = useRouter()
-    const [page, setPage] = React.useState(1);
-    const allPostsQueryVars = {
-        take: 10,
-        skip: page,
-    }
+    const [page, setPage] = useState(1);
+    const [params,setParams] = useState<ParamsType>({
+        filter:'',
+        take:10,
+        skip:1,
+        orderBy:{description:'asc'}
+    } as ParamsType)
     const { loading, error, data, fetchMore, networkStatus } = useQuery(
-        FETCH_PAGINATION_LINKS,
+        GET_LINKS_BY_PARAMS,
         {
-            variables: allPostsQueryVars,
+            variables:params,
             notifyOnNetworkStatusChange: true,
         }
     )
@@ -35,18 +33,15 @@ const Feeds = () => {
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
+        setParams({...params,skip:value})
     };
     const {username} = router.query
 
     const loadingMorePosts = networkStatus === NetworkStatus.fetchMore
 
-    // const loadMorePosts = () => {
-    //     fetchMore({
-    //         variables: {
-    //             skip: allPosts.length,
-    //         },
-    //     })
-    // }
+    const sortHandler = () =>{
+
+    }
 
     if (error) return <h1>something went wrong...</h1>
     if (loading && !loadingMorePosts) return <h1>loading...</h1>
@@ -61,9 +56,9 @@ const Feeds = () => {
 
     return (
         <div className={s.inner}>
-            <FilterInput links={links} setLinks={setLinks}/>
+            <FilterInput  params={params} setParams={setParams}/>
             <div className={s.linksTitle}>
-                <div className={s.descriptionTitle}>Description</div>
+                <div className={s.descriptionTitle} onClick={sortHandler}>Description</div>
                 <div className={s.VotesTitle}>Votes</div>
             </div>
             <div className={s.scrollbarContainer}>

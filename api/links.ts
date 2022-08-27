@@ -1,9 +1,23 @@
-import {gql, useMutation} from "@apollo/client";
+import {gql} from "@apollo/client";
 
+enum Sort {
+    asc,
+    desc
+}
 
-export const FETCH_LINKS_BY_PARAMS = gql`
-query feed($filter:String!) {
-  feed(filter: $filter) {
+type SortType = {
+    description:Sort
+}
+
+type LinkOrderByInput = {
+    description: Sort
+    // url: Sort
+    // createdAt: Sort
+}
+
+export const GET_LINKS_BY_PARAMS = gql`
+query feed($filter:String!,$take:Int!,$skip:Int!, $orderBy:LinkOrderByInput!) {
+  feed(filter:$filter,take: $take,skip: $skip,orderBy:$orderBy) {
     count
     links {
       id
@@ -25,53 +39,6 @@ query feed($filter:String!) {
 }
 `;
 
-export const FETCH_PAGINATION_LINKS = gql`
-query feed($take:Int!,$skip:Int!) {
-  feed(take: $take,skip: $skip) {
-    count
-    links {
-      id
-      description
-      url
-      postedBy {
-        id
-        name
-      }
-      votes {
-        id
-        user {
-          id
-          name
-        }
-      }
-    }
-  }
-}
-`;
-
-export const FETCH_ALL_LINKS = gql`
-query {
-  feed {
-    count
-    links {
-      id
-      description
-      url
-      postedBy {
-        id
-        name
-      }
-      votes {
-        id
-        user {
-          id
-          name
-        }
-      }
-    }
-  }
-}
-`;
 
 export const ADD_NEW_LINK = gql`
 mutation post ($url: String!, $description: String!) {
@@ -86,8 +53,8 @@ mutation post ($url: String!, $description: String!) {
 export const VOTE_LINK = gql`
 mutation vote ($linkId: ID!) {
   vote(linkId: $linkId) {
-  id
-        }
+     id
+  }
 }
 `;
 

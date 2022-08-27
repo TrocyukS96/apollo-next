@@ -22,3 +22,23 @@ export type  UserType = {
     id:string
     name:string
 }
+
+export enum Sort {
+    asc,
+    desc
+}
+
+export type LinkOrderByInput = {
+    description: Sort
+    url: Sort
+    createdAt: Sort
+}
+
+export type ParamsType ={
+    filter:string,
+    take: number,
+    skip: number,
+    orderBy:{
+        description: string,
+    }
+}

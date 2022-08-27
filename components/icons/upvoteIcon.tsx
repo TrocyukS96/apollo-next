@@ -1,4 +1,6 @@
 import React from 'react';
+import {useQuery} from "@apollo/client";
+import {GET_LINKS_BY_PARAMS} from "../../api/links";
 
 interface IProps{
     fill?:string
@@ -19,3 +21,17 @@ const UpvoteIcon = ({fill,className}:IProps) => {
 };
 
 export default UpvoteIcon;
+
+// const { loading, error, data, fetchMore, networkStatus } = useQuery(
+//     GET_LINKS_BY_PARAMS,
+//     {
+//         variables: {
+//             orderBy:{
+//                 description: 'asc',
+//                 // url: 'asc',
+//                 // createdAt: 'asc',
+//             }
+//         },
+//         notifyOnNetworkStatusChange: true,
+//     }
+// )

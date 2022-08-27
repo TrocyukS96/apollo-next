@@ -9,10 +9,9 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
     border-right: 2px solid;
-    flex-direction: column;
     padding: 6px;
     div{
       margin: 6px 0 0;

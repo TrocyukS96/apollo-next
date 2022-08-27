@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import s from './styles.module.scss'
 import {VoteType} from "../../../types";
-import UserIcon from "../../icons/userIcon";
 import UpvoteIcon from "../../icons/upvoteIcon";
 import ArrowUpIcon from "../../icons/arrowUpIcon";
 import {useMutation} from "@apollo/client";
