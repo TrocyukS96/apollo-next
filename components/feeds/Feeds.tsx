@@ -8,6 +8,9 @@ import AddLinkForm from "../addLinkForm/AddLinkForm";
 import FilterInput from "../filterInput/FilterInput";
 import {Pagination} from "@mui/material";
 import {useRouter} from "next/router";
+import SortArrowIcon from "../icons/sortArrowUpIcon";
+import SortArrowUpIcon from "../icons/sortArrowUpIcon";
+import SortArrowDownIcon from "../icons/sortArrowDownIcon";
 
 const Feeds = () => {
     const router = useRouter()
@@ -64,7 +67,7 @@ const Feeds = () => {
         <div className={s.inner}>
             <FilterInput params={params} setParams={setParams}/>
             <div className={s.linksTitle}>
-                <div className={s.descriptionTitle} onClick={sortHandler}>Description {params.orderBy.description}</div>
+                <div className={s.descriptionTitle} onClick={sortHandler}>Description  {params.orderBy.description==='asc' ? <SortArrowUpIcon/> :<SortArrowDownIcon/>} </div>
                 <div className={s.VotesTitle}>Votes</div>
             </div>
             <div className={s.scrollbarContainer}>
