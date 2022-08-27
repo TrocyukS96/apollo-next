@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import {gql, useMutation} from "@apollo/client";
 import {SIGN_UP} from "../api/signUp";
 import {validate} from "../utils/validate";
+import {Button, Input} from "@mui/material";
 
 
 
@@ -49,13 +50,15 @@ export default function Registration() {
                         <div className={s.inputWrap}>
                             <label htmlFor="name">Name</label>
                             <div>
-                                <input
+                                <Input
                                     id="name"
                                     name="name"
                                     type="text"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.name}
+                                    style={{width:'170px',padding:'0 3px'}}
+                                    placeholder={'name'}
                                 />
                                 {formik.errors.name ? <div className={s.error}>{formik.errors.name}</div> : null}
                             </div>
@@ -63,13 +66,16 @@ export default function Registration() {
                         <div className={s.inputWrap}>
                             <label htmlFor="email">Email</label>
                             <div>
-                                <input
+                                <Input
                                     id="email"
                                     name="email"
                                     type="text"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.email}
+                                    style={{width:'170px',padding:'0 3px'}}
+                                    placeholder={'email'}
+
                                 />
                                 {formik.errors.email ? <div className={s.error}>{formik.errors.email}</div> : null}
                             </div>
@@ -78,22 +84,24 @@ export default function Registration() {
                             <label htmlFor="password">Password</label>
                             <div>
 
-                                <input
+                                <Input
                                     id="password"
                                     name="password"
                                     type="password"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.password}
+                                    style={{width:'170px',padding:'0 3px'}}
+                                    placeholder={'password'}
                                 />
                                 {formik.errors.password ?
                                     <div className={s.error}>{formik.errors.password}</div> : null}
                             </div>
                         </div>
                         <div className={s.btnWrap}>
-                            <button type="submit">
+                            <Button type="submit" variant={'contained'}>
                                 Submit
-                            </button>
+                            </Button>
                         </div>
                         <div className={s.redirectBlock}>
                             <p>Already have an account?</p>

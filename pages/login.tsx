@@ -5,6 +5,7 @@ import {validate} from "../utils/validate";
 import Head from "next/head";
 import s from "../styles/login.module.scss";
 import {SIGN_IN} from "../api/signIn";
+import {Button, Input, TextField} from "@mui/material";
 
 
 export default function Login() {
@@ -51,13 +52,15 @@ export default function Login() {
                     <div className={s.inputWrap}>
                         <label htmlFor="email">Email</label>
                         <div>
-                            <input
+                            <Input
                                 id="email"
                                 name="email"
                                 type="text"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.email}
+                                placeholder={'email'}
+                                style={{width:'170px',padding:'0 3px'}}
                             />
                             {formik.errors.email ? <div className={s.error}>{formik.errors.email}</div> : null}
                         </div>
@@ -66,22 +69,24 @@ export default function Login() {
                         <label htmlFor="password">Password</label>
                         <div>
 
-                            <input
+                            <Input
                                 id="password"
                                 name="password"
                                 type="password"
+                                placeholder={'password'}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.password}
+                                style={{width:'170px',padding:'0 3px'}}
                             />
                             {formik.errors.password ?
                                 <div className={s.error}>{formik.errors.password}</div> : null}
                         </div>
                     </div>
                     <div className={s.btnWrap}>
-                        <button type="submit">
+                        <Button type="submit" variant={'contained'}>
                             Submit
-                        </button>
+                        </Button>
                     </div>
                     <div className={s.redirectBlock}>
                         <p>Do not you have an account?</p>

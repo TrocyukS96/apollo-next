@@ -13,7 +13,7 @@ interface IProps {
     style?: {}
     votes?: VoteType[]
     id: string
-    userName:string
+    userName?:string
 }
 
 const toMapVotes = (votes: VoteType[]) => <div className={s.votes}>{votes?.map((v: VoteType) => <div className={s.user}
@@ -28,9 +28,12 @@ const FeedItem = ({link, description, userName, id, style, votes}: IProps) => {
         }
     }
     const upvoteHandler = async () => {
-        const data = await vote({variables: {linkId: id}})
-        console.log(data)
-        setIsVote(true)
+        if(!(votes?.find(f=>f.user.name===userName)) && !isVote){
+            const data = await vote({variables: {linkId: id}})
+            console.log(data)
+            setIsVote(true)
+        }
+
     }
     console.log(userName)
     return (
@@ -38,7 +41,7 @@ const FeedItem = ({link, description, userName, id, style, votes}: IProps) => {
             <div className={s.description}>
                 <div>{description}</div>
                 <div onClick={upvoteHandler} className={s.upvoteIconWrapper}>
-                    <UpvoteIcon className={s.upvoteIcon} fill={isVote || votes.find(f=>f.user.name===userName)  ? 'black' : 'white'} />
+                    <UpvoteIcon className={s.upvoteIcon} fill={isVote || votes?.find(f=>f.user.name===userName)  ? 'black' : 'white'} />
                 </div>
             </div>
             <div className={s.votesAccordion}

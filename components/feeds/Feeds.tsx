@@ -76,7 +76,7 @@ const Feeds = () => {
                                 name={link.id}
                                 link={link.url}
                                 description={link.description}
-                                userName={username}
+                                userName={username ? username : ''}
                             />
                         )
                     })}
