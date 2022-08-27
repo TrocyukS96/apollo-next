@@ -33,6 +33,9 @@ export default function Registration() {
 
         },
     });
+    const redirectHandler = () => {
+        router.push('/login')
+    }
     return (
             <>
                 <Head>
@@ -91,6 +94,10 @@ export default function Registration() {
                             <button type="submit">
                                 Submit
                             </button>
+                        </div>
+                        <div className={s.redirectBlock}>
+                            <p>Already have an account?</p>
+                            <p onClick={redirectHandler}>Sign up</p>
                         </div>
                     </form>
                 </div>

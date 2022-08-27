@@ -1,18 +1,15 @@
-import {MainLayout} from "../components/layouts/mainLayout/MainLayout";
 import {useMutation} from "@apollo/client";
-import {SIGN_UP} from "../api/signUp";
 import {useRouter} from "next/router";
 import {useFormik} from "formik";
 import {validate} from "../utils/validate";
 import Head from "next/head";
-import s from "../styles/registration.module.scss";
+import s from "../styles/login.module.scss";
 import {SIGN_IN} from "../api/signIn";
 
 
 export default function Login() {
     const [login] = useMutation(SIGN_IN)
     const router = useRouter()
-
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -47,6 +44,8 @@ export default function Login() {
                 </title>
             </Head>
             <div className={s.inner}>
+                {/*//@ts-ignore*/}
+
                 <form onSubmit={formik.handleSubmit} className={s.container}>
                     <h1>Sign In</h1>
                     <div className={s.inputWrap}>
@@ -85,7 +84,7 @@ export default function Login() {
                         </button>
                     </div>
                     <div className={s.redirectBlock}>
-                        <p>Don't you have an account?</p>
+                        <p>Do not you have an account?</p>
                         <p onClick={redirectHandler}>Sign up</p>
                     </div>
                 </form>

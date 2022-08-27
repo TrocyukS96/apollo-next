@@ -1,31 +1,40 @@
 .inner {
+
+  margin-bottom: 30px ;
+  .searchBlock{
+    margin-bottom: 10px;
+  }
+  .linksTitle{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    background: #fff;
+    border: 2px solid;
+
+    .descriptionTitle{
+      border-right: 2px solid;
+
+    }
+  }
+  .scrollbarContainer{
+    max-height: 500px;
+    overflow-y: auto;
+
+
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+  .paginationWrapper{
+    margin-top: 10px;
+  }
   .addPostBlock {
     margin-top: 20px;
     text-align: left;
-    width: 300px;
+    width: 600px;
     border: 2px solid;
     padding: 5px;
 
-    .inputWrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-      gap: 10px;
-
-      input, textarea {
-        padding: 5px;
-      }
-
-    }
-
-    .btnWrap {
-      margin-top: 20px;
-    }
   }
-  .error{
-    margin-top: 7px;
-    color:red;
-    text-align: center;
-  }
+
 }

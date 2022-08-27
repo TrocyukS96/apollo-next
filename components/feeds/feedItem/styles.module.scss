@@ -1,16 +1,100 @@
-.inner{
-  display: grid;
-  grid-template-columns: 20% 40% 40%;
-  border:2px solid;
+.inner {
+  border: 2px solid;
   background: white;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 30% 70%;
+
+  .description {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-right: 2px solid;
+    flex-direction: column;
+    padding: 6px;
+    div{
+      margin: 6px 0 0;
+    }
+    .upvoteIconWrapper{
+      cursor: pointer;
+    }
 
 
-  div{
-    padding: 5px;
-    &:nth-child(1), &:nth-child(2){
-      border-right: 2px solid;
+    button{
+      background: transparent;
+      border-style: none;
+      cursor: pointer;
+      transition: all .3s ease;
     }
   }
 
+  .votesAccordion {
+    position: relative;
+    .title {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      margin: 10px 0 0;
+      overflow-x: auto;
+      padding: 5px;
+      width: 485px;
+    }
+
+    .iconWrapper{
+      position: absolute;
+      right: 10px;
+      top: 40px;
+      transform: translateY(-50%);
+      z-index: 100;
+      cursor: pointer;
+      .upvoteIcon{
+        transform: translateX(7px);
+      }
+    }
+
+    .content{
+      padding: 5px;
+      text-align: left;
+      .contentInner{
+        max-height: 120px;
+        overflow-y: auto;
+      }
+      .contentItem{
+      }
+
+      transition: all .3s ease;
+    }
+    .upvotedTitle{
+      margin: 0  0 10px 0;
+      text-align: center;
+    }
+  .noUpvoteBlock{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+
+  }
+  }
+
+
+  .votes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 5px;
+    margin-top: 4px;
+
+
+    .user{
+      width: 30px;
+      height: 30px;
+      border: 2px solid;
+      border-radius: 50%;
+    }
+  }
 
 }

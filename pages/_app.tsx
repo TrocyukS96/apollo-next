@@ -6,6 +6,7 @@ import Guard from "../components/layouts/Guard";
 import {client} from "../api/apollo-client";
 
 function MyApp({Component, pageProps}: AppProps) {
+
     return <ApolloProvider client={client}>
         <Guard>
             <MainLayout>

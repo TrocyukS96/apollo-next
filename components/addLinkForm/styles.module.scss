@@ -1,0 +1,41 @@
+.form {
+  margin: 20px auto 5px;
+  width: 400px;
+
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+
+
+    span {
+      margin-top: 9px;
+    }
+
+    .inputInner {
+      input {
+        padding: 5px;
+        width: 300px;
+      }
+
+      .textarea {
+        padding: 5px;
+        width: 310px;
+        height: 100px;
+      }
+    }
+
+  }
+
+  .btnWrap {
+    margin-top: 20px;
+  }
+
+  .error {
+    margin-top: 3px;
+    color: red;
+    text-align: center;
+  }
+}
