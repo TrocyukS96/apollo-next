@@ -1,8 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
-import {LinkType, ParamsType} from "../../types";
-import {useLazyQuery, useQuery} from "@apollo/client";
-import {FETCH_LINKS_BY_PARAMS, FETCH_PAGINATION_LINKS} from "../../api/links";
-import {Button, Input, TextField} from "@mui/material";
+import {ParamsType} from "../../types";
+import {Button, Input} from "@mui/material";
 import s from './styles.module.scss';
 
 interface IProps{
@@ -11,13 +9,11 @@ interface IProps{
 }
 
 const FilterInput = ({params,setParams}:IProps) => {
-    const [filterData,setFilterData] = useState({filter:''})
-    const [searchInput,setSearchInput] = useState('')
+    const [searchInput,setSearchInput] = useState(params.filter)
     const searchInputHandler = (e:ChangeEvent<HTMLInputElement>)=>{
         setSearchInput(e.currentTarget.value)
     }
     const searchBtnHandler = async ()=>{
-        setFilterData({filter:searchInput})
         setParams({...params, filter:searchInput})
     }
     return (
@@ -28,6 +24,7 @@ const FilterInput = ({params,setParams}:IProps) => {
                        className={s.searchInput}
                    color={'primary'}
                    sx={{border:'2px solid'}}
+                   value={searchInput}
             />
             <Button onClick={searchBtnHandler}
                     variant={'contained'}

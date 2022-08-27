@@ -16,7 +16,7 @@ const Feeds = () => {
         filter:'',
         take:10,
         skip:1,
-        orderBy:{description:'asc'}
+        orderBy:{description:'desc'}
     } as ParamsType)
     const { loading, error, data, fetchMore, networkStatus } = useQuery(
         GET_LINKS_BY_PARAMS,
